@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notes_making_app/database/notes_database.dart';
 import 'package:notes_making_app/pages/home_page.dart';
-
 import '../models/notes_table_model.dart';
+import 'note_card_display.dart';
 import 'note_description_page.dart';
 
 class DisplayAllNotes extends StatefulWidget {
@@ -35,7 +35,7 @@ class _DisplayAllNotesState extends State<DisplayAllNotes> {
     notes = await NotesDatabase.instance.readAllNotes();
     if (notes.isEmpty) {
       Navigator.push(
-          context, MaterialPageRoute(builder: ((context) => HomePage())));
+          context, MaterialPageRoute(builder: ((context) => const HomePage())));
     }
     setState(() {
       isLoading = false;
@@ -62,14 +62,10 @@ class _DisplayAllNotesState extends State<DisplayAllNotes> {
 
                 return GestureDetector(
                   onTap: () async{
-                    await Navigator.push(context, MaterialPageRoute(builder: (context)=> NoteDescriptionPage()));
+                    await Navigator.push(context, MaterialPageRoute(builder: (context)=> NoteDescriptionPage(noteId: note.id!)));
                   },
 
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 4.0),
-                    
-                    
-                  ),
+                  child: NoteCardDisplay(note: note, index: index),
                 );
                 
               },
