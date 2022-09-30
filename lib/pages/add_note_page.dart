@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_making_app/database/notes_database.dart';
+import 'package:notes_making_app/db/notes_database.dart';
+import 'package:notes_making_app/pages/display_all_notes.dart';
 import 'package:notes_making_app/pages/input_add_note_page.dart';
 import '../models/notes_table_model.dart';
 
@@ -24,9 +25,12 @@ class _AddNotePageState extends State<AddNotePage> {
     title = widget.note?.title??"";
     desc = widget.note?.desc??"";
   }
-  
+
+  @override
   Widget build(BuildContext context) {
+    print("ADD NOTE PAGE");
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(child: Column(children: [
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +42,7 @@ class _AddNotePageState extends State<AddNotePage> {
                   height: 50.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 37, 37, 37),
@@ -57,6 +61,7 @@ class _AddNotePageState extends State<AddNotePage> {
                   child: ElevatedButton(
                     onPressed: () {
                       saveNote();
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> DisplayAllNotes()));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 37, 37, 37),

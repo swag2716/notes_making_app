@@ -14,35 +14,27 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      // appBar: AppBar(
-      //   title: const Padding(
-      //     padding: EdgeInsets.all(25.0),
-      //     child: Text("Notes",
-      //         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 43)),
-      //   ),
-      //       backgroundColor: Colors.transparent,
-      // ),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const Text("Notes",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 43)),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, 
-            children: [
-            Image.asset("assets/images/Notes_img.png"),
-            const Text(
-              "Create your first note!",
-              style: TextStyle(color: Colors.white),
-            ),
-          ]),
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.all(25.0),
+          child: Text("Notes",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 43)),
         ),
-      ]),),
+            backgroundColor: Colors.transparent,
+      ),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+              Image.asset("assets/images/Notes_img.png"),
+              const Text(
+                "Create your first note!",
+                style: TextStyle(color: Colors.white),
+              ),
+            ]),
+          ),
+        ),),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,

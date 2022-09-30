@@ -1,21 +1,21 @@
 
-const String tableNotes = 'notes';
+final String tableNotes = 'notes';
 
 class NoteFields{
-  static final List<String> values = [id, title, desc, createdTime];
-  static const String id = '_id';
-  static const String title = 'title';
-  static const String desc = 'desc';
-  static const String createdTime = 'createdTime';
+   static final List<String> values = [id, title, desc, time];
+   static final String id = '_id';
+   static final String title = 'title';
+   static final String desc = 'desc';
+   static final String time = 'time';
 }
 
 class Note{
-  final int? id;
-  final String title;
-  final String desc;
-  final DateTime createdTime;
+   final int? id;
+   final String title;
+   final String desc;
+   final DateTime createdTime;
 
-  Note({this.id, required this.title, required this.desc, required this.createdTime});
+  Note({this.id, this.title = "", this.desc = "", required this.createdTime});
 
 
   Note copy({
@@ -31,20 +31,19 @@ class Note{
      createdTime: createdTime ?? this.createdTime
      );
 
-  static Note fromJson(Map<String, Object?> json) => Note(
-    id: json[NoteFields.id] as int?,
-    title: json[NoteFields.title] as String,
-    desc: json[NoteFields.desc] as String,
-    createdTime: json[NoteFields.createdTime] as DateTime,
-  );
-
-
-
-  Map<String, Object?> toJson() => {
-    NoteFields.id: id!,
+Map<String, dynamic> toMap() => {
+    NoteFields.id: id,
     NoteFields.title: title,
     NoteFields.desc: desc,
-    NoteFields.createdTime: createdTime.toIso8601String(),
+    NoteFields.time: createdTime.toIso8601String(),
   };
+
+static Note fromMap(Map<String, dynamic> map) => Note(
+    id: map[NoteFields.id] as int,
+    title: map[NoteFields.title] as String,
+    desc: map[NoteFields.desc] as String,
+    createdTime: DateTime.parse(map[NoteFields.time] as String),
+);
+  
 }
 
