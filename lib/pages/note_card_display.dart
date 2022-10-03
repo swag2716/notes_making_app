@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import '../models/notes_table_model.dart';
 
@@ -21,6 +19,21 @@ class NoteCardDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String result;
+    if(note.title.isEmpty){
+      result = note.desc;
+    }
+    else{
+      result = note.title + "\n" + note.desc;
+    }
+    String result30;
+    if(result.length>30){
+      result30 = result.substring(0, 30);
+      result30 = result30 + "...";
+    }
+    else{
+      result30 = result;
+    }
     final color = cardColors[index% cardColors.length];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 5.0),
@@ -33,9 +46,12 @@ class NoteCardDisplay extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-              Text(
-                note.title,
-                style: TextStyle(color: Colors.black, ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 46.0, vertical: 22.0),
+                child: Text(
+                  result30,
+                  style: const TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w400),
+                ),
               )
             ],),
           )

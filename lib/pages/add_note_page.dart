@@ -3,6 +3,7 @@ import 'package:notes_making_app/db/notes_database.dart';
 import 'package:notes_making_app/pages/display_all_notes.dart';
 import 'package:notes_making_app/pages/input_add_note_page.dart';
 import '../models/notes_table_model.dart';
+import 'dialog_helper.dart';
 
 class AddNotePage extends StatefulWidget {
   final Note? note;
@@ -28,9 +29,8 @@ class _AddNotePageState extends State<AddNotePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("ADD NOTE PAGE");
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 37, 37, 37),
       body: SafeArea(child: Column(children: [
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +45,7 @@ class _AddNotePageState extends State<AddNotePage> {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 37, 37, 37),
+                      backgroundColor: const Color.fromARGB(255, 59, 59, 59),
                         shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16.0),
                     )),
@@ -60,11 +60,16 @@ class _AddNotePageState extends State<AddNotePage> {
                   height: 50.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      saveNote();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> DisplayAllNotes()));
+                      if(desc.isEmpty){
+                        DialogHelper.showAlertDialog(context);
+                      }
+                      else{
+                        saveNote();
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> DisplayAllNotes()));
+                      }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 37, 37, 37),
+                      backgroundColor: const Color.fromARGB(255, 59, 59, 59),
                         shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16.0),
                     )),

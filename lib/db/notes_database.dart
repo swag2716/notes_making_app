@@ -12,9 +12,6 @@ class NotesDatabase{
   NotesDatabase._init();
   Future<Database> get database async{
     if(_database!=null){
-      // Directory documentDirectory = await getApplicationDocumentsDirectory();
-      // final path = join(documentDirectory.path, 'notes_app.db');
-      // deleteDatabase(path);
       return _database!;
       }
       _database = await _initDB("notes_app.db");
@@ -25,8 +22,6 @@ class NotesDatabase{
     // final dbPath = await getDatabasesPath();
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentDirectory.path, filePath);
-    print("path is : ");
-    print(path);
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
