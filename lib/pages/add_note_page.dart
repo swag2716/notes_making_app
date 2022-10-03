@@ -65,7 +65,8 @@ class _AddNotePageState extends State<AddNotePage> {
                       }
                       else{
                         saveNote();
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> DisplayAllNotes()));
+                        Navigator.of(context).popUntil((route) => route.isFirst);
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DisplayAllNotes()));
                       }
                     },
                     style: ElevatedButton.styleFrom(

@@ -58,7 +58,7 @@ class _DisplayAllNotesState extends State<DisplayAllNotes> {
                   child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(30.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Row(
                         children: const [
                           Text("Notes",

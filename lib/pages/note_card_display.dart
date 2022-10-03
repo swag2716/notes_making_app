@@ -36,21 +36,21 @@ class NoteCardDisplay extends StatelessWidget {
     }
     final color = cardColors[index% cardColors.length];
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         color: color,
         child: Container(
           constraints: const BoxConstraints(minHeight: 20.0),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 46.0, vertical: 22.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
                   result30,
-                  style: const TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w400),
+                  style: const TextStyle(color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w400),
                 ),
               )
             ],),
