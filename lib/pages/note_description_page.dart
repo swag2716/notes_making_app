@@ -37,11 +37,12 @@ class _NoteDescriptionPageState extends State<NoteDescriptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 37, 37, 37),
-      body: isLoading
+      body: 
+      isLoading
           ? const Center(
               child: CircularProgressIndicator(),
-            )
-          : SafeArea(
+            ):
+          SafeArea(
               child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

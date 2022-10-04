@@ -3,7 +3,6 @@ import 'package:notes_making_app/models/notes_table_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:intl/intl.dart';
 
 class NotesDatabase{
   static final NotesDatabase instance = NotesDatabase._init();
